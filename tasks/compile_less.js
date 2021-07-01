@@ -6,7 +6,7 @@ const glob = require('glob')
 let main_output_dir = path.resolve(__dirname, '../dist/css')
 fs.ensureDirSync(main_output_dir, { recursive: true })
 
-// /* 
+// /*
 //  * Copy support files
 //  */
 // fs.copySync('src/css/icons', path.join(main_output_dir, 'icons'), err => {
@@ -16,24 +16,24 @@ fs.ensureDirSync(main_output_dir, { recursive: true })
 
 
 // /*
-//  * Compile base CSS 
+//  * Compile base CSS
 //  */
-// let p = path.resolve(__dirname, '../src/less/TL.Timeline.less')
-// let file_content = fs.readFileSync(p, 'utf-8')
-// less.render(file_content, {
-//     filename: p
-// }).then(
-//     (output) => {
-//         var basename = path.basename(p, '.less')
-//         var output_css = path.join(main_output_dir, `timeline.css`)
-//         fs.writeFileSync(path.join(output_css), output.css)
-//         console.log(`FONT CSS compiled ${p}`)
-//     }
-// )
+let p = path.resolve(__dirname, '../src/less/TL.Timeline.less')
+let file_content = fs.readFileSync(p, 'utf-8')
+less.render(file_content, {
+    filename: p
+}).then(
+    (output) => {
+        var basename = path.basename(p, '.less')
+        var output_css = path.join(main_output_dir, `timeline.css`)
+        fs.writeFileSync(path.join(output_css), output.css)
+        console.log(`Base CSS compiled ${p}`)
+    }
+)
 
 
 /*
- * Compile font files 
+ * Compile font files
  */
 const font_src_dir = path.resolve(__dirname, '../src/less/fonts')
 const font_output_dir = path.resolve(__dirname, '../dist/css/fonts')
